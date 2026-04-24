@@ -15,13 +15,14 @@ from dotenv import get_key
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+ENV_PATH = "../../.env"
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = get_key('../../.env', 'DJANGO_TOKEN')
+SECRET_KEY = get_key(ENV_PATH, 'DJANGO_TOKEN')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -39,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apps.main',
-    'apps.site_news'
+    'apps.site_news',
+    'apps.games_news'
 ]
 
 MIDDLEWARE = [
@@ -77,8 +79,12 @@ WSGI_APPLICATION = 'web.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': get_key(ENV_PATH, "DB_NAME"),
+        'USER': get_key(ENV_PATH, "DB_USER"),
+        'PASSWORD': get_key(ENV_PATH, "DB_PASSWORD"),
+        'HOST': get_key(ENV_PATH, "DB_HOST"),
+        'PORT': get_key(ENV_PATH, "DB_PORT"),
     }
 }
 
