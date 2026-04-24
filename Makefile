@@ -1,0 +1,3 @@
+install:
+	pip install django
+	pip install python-dotenv
