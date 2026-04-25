@@ -15,8 +15,10 @@ from dotenv import get_key
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-ENV_PATH = "../../.env"
+ENV_PATH = BASE_DIR.parent / ".env"
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
@@ -84,7 +86,7 @@ DATABASES = {
         'USER': get_key(ENV_PATH, "DB_USER"),
         'PASSWORD': get_key(ENV_PATH, "DB_PASSWORD"),
         'HOST': get_key(ENV_PATH, "DB_HOST"),
-        'PORT': get_key(ENV_PATH, "DB_PORT"),
+        'PORT': int(get_key(ENV_PATH, "DB_PORT")),
     }
 }
 
