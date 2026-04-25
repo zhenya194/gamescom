@@ -89,7 +89,6 @@ DATABASES = {
         'PORT': int(get_key(ENV_PATH, "DB_PORT")),
     }
 }
-print(get_key(ENV_PATH, "DB_PORT"))
 
 
 # Password validation
