@@ -6,5 +6,5 @@ class GamesNews(models.Model):
     image = models.ImageField(
         "Upload an image of this artcile",
         upload_to="articles/")
-    full_text = models.TextField("Full text of article")
+    text = models.TextField("Full text of article")
     date = models.DateField("Date of publish", default=timezone.now)
